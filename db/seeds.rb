@@ -26,8 +26,9 @@ Applicant.delete_all
     @lasagna = @boulder.pets.create!(adoptable: true, age: 1, breed: 'orange tabby shorthair', name: 'Lasagna')
     
 ## APPLICANTS    
-    @heather = Applicant.create!(name: "Heather Moore", street: "Pearl St", city: "Denver", state: "CO", zip: "80210", good_home: "live close to dog parks")
-    @olivia = Applicant.create!(name: "Olivia Valentin", street: "1234 Main St", city: "Denver", state: "CO", zip: "80203", good_home: "I have vetenarian expierence")
-    
+    @heather = Applicant.create!(name: "Heather Moore", street: "Pearl St", city: "Denver", state: "CO", zip: "80210")
+    @olivia = Applicant.create!(name: "Olivia Valentin", street: "1234 Main St", city: "Denver", state: "CO", zip: "80203")
+    @thomas = Applicant.create!(name: "Thomas", street: "1515 15 Ave", city: "Denver", state: "CO", zip: "80203", good_home: "Lots of love and land!", status: "Pending")
+    PetApplicant.create!(applicant: @thomas, pet: @lobster)
     PetApplicant.create!(applicant: @olivia, pet: @lucille_bald)
     PetApplicant.create!(applicant: @olivia, pet: @lobster)
