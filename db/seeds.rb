@@ -18,8 +18,8 @@ Applicant.delete_all
     @clawdia = @aurora.pets.create!(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
     @ann = @aurora.pets.create!(name: 'Ann', breed: 'ragdoll', age: 3, adoptable: false)
 
-    @lucille_bald = @mystery_bldg.pets.create!(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
     @lobster = @mystery_bldg.pets.create!(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster')
+    @lucille_bald = @mystery_bldg.pets.create!(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
     @scooby = @mystery_bldg.pets.create!(name: 'Scooby', age: 2, breed: 'Great Dane', adoptable: true)
     
     @sylvester = @boulder.pets.create!(adoptable: true, age: 1, breed: 'domestic shorthair', name: 'Sylvester')
@@ -27,8 +27,18 @@ Applicant.delete_all
     
 ## APPLICANTS    
     @heather = Applicant.create!(name: "Heather Moore", street: "Pearl St", city: "Denver", state: "CO", zip: "80210")
+
     @olivia = Applicant.create!(name: "Olivia Valentin", street: "1234 Main St", city: "Denver", state: "CO", zip: "80203")
-    @thomas = Applicant.create!(name: "Thomas", street: "1515 15 Ave", city: "Denver", state: "CO", zip: "80203", good_home: "Lots of love and land!", status: "Pending")
-    PetApplicant.create!(applicant: @thomas, pet: @lobster)
     PetApplicant.create!(applicant: @olivia, pet: @lucille_bald)
     PetApplicant.create!(applicant: @olivia, pet: @lobster)
+
+    @thomas = Applicant.create!(name: "Thomas", street: "1515 15 Ave", city: "Denver", state: "CO", zip: "80203", good_home: "Lots of love and land!", status: "Pending")
+    PetApplicant.create!(applicant: @thomas, pet: @lobster)
+    
+    @sasha = Applicant.create!(name: "Sasha Baron", street: "10 Maple Way", city: "Eagleton", state: "CO", zip: "80223", good_home: "Cat Whisperer", status: "Pending")
+    PetApplicant.create!(applicant: @sasha, pet: @lucille_bald)
+    PetApplicant.create!(applicant: @sasha, pet: @sylvester)
+    
+    @danny = Applicant.create!(name: "Danny Lowe", street: "640 Center St.", city: "Plymouth", state: "CO", zip: "80101", good_home: "Energetic and exercise lover", status: "Pending")
+    PetApplicant.create!(applicant: @danny, pet: @lobster)
+    PetApplicant.create!(applicant: @danny, pet: @scooby)
