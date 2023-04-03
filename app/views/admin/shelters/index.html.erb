@@ -6,4 +6,9 @@
 
 <section>
   <h2>Shelters with Pending Applications</h2>
+  <% @shelters_pending_apps.each do |shelter| %>
+  <div id="shelter-<%= shelter.id %>">
+  <p><%= shelter.name %></p>
+  <% end %>
+  </div>
 </section>

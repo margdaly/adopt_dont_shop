@@ -25,6 +25,11 @@ RSpec.describe "Admin Shelters Index" do
 
       expect(page).to have_content("Shelters with Pending Applications")
       
+      within "#shelter-#{@mystery_bldg.id}" do
+        expect(page).to have_content("#{@mystery_bldg.name}")
+        expect(page).to_not have_content("#{@aurora.name}")
+        expect(page).to_not have_content("#{@boulder.name}")
+      end
     end
   end
 end
