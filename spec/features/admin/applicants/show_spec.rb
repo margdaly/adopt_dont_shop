@@ -57,7 +57,7 @@ RSpec.describe "Admin Applicants Show" do
       expect(page).to_not have_button("Reject #{@lobster.name} for Adoption")
       
       click_on "Reject #{@lucille_bald.name} for Adoption"
-      save_and_open_page
+
       expect(current_path).to eq("/admin/applicants/#{@sasha.id}")
 
       expect(page).to_not have_button("Reject #{@lucille_bald.name} for adoption")
