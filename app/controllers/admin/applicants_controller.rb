@@ -2,10 +2,6 @@ class Admin::ApplicantsController < ApplicationController
   def show
     @applicant = Applicant.find(params[:id])
     @pets = @applicant.pets
-    # @pet = Pet.find(params[:id])
-    # @pet.status == "Pending"
-    # # require 'pry'; binding.pry
-    # # pet = Pet.find(params[:id])
   end
 
   def update
