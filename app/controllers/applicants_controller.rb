@@ -4,7 +4,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.find(params[:id])
     @pets = @applicant.pets
     @searched_pets = Pet.search(params[:search_name]).adoptable if !params[:search_name].nil?
-    @applicant.status = "Pending" if params[:sub_app] == "Submit Application"
+    @application.status = "Pending" if params[:submit_app] == "Submit Application"
   end
 
   def new
