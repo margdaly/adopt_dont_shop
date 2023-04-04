@@ -39,10 +39,10 @@ RSpec.describe "Admin Applicants Show" do
       expect(page).to have_button("Approve #{@lobster.name} for Adoption")
       expect(page).to_not have_button("Approve #{@lucille_bald.name} for Adoption")
       expect(page).to_not have_button("Approve #{@sylvester.name} for Adoption")
+      
       click_on "Approve #{@lobster.name} for Adoption"
 
       expect(current_path).to eq("/admin/applicants/#{@danny.id}")
- 
       expect(page).to have_content("#{@lobster.name} is approved for adoption!")
       expect(page).to_not have_button("Approve #{@lobster.name} for Adoption")
       expect(page).to have_button("Approve #{@scooby.name} for Adoption")
@@ -59,9 +59,7 @@ RSpec.describe "Admin Applicants Show" do
       click_on "Reject #{@lucille_bald.name} for Adoption"
 
       expect(current_path).to eq("/admin/applicants/#{@sasha.id}")
-
       expect(page).to_not have_button("Reject #{@lucille_bald.name} for adoption")
-
       expect(page).to have_content("#{@lucille_bald.name} is rejected for adoption.")
    
       within "#pet-#{@sylvester.id}" do
@@ -74,34 +72,30 @@ RSpec.describe "Admin Applicants Show" do
         first applicant's show page, APPROVE their application. When I
         visit the second applicant's show page, I still see the buttons
         to either accept or reject their specific application for that pet." do
-        visit "admin/applicants/#{@danny.id}"
-
-        click_on "Approve #{@lobster.name} for Adoption"
-
-        visit "admin/applicants/#{@thomas.id}"
-        within "#pet-#{@lobster.id}" do
         
-          expect(page).to have_content(@lobster.name)
-          expect(page).to have_button("Approve #{@lobster.name} for Adoption")
-          expect(page).to have_button("Reject #{@lobster.name} for Adoption")
-        end
+      visit "admin/applicants/#{@danny.id}"
+
+      click_on "Approve #{@lobster.name} for Adoption"
+
+      within "#pet-#{@lobster.id}" do
+        expect(page).to have_content(@lobster.name)
+        expect(page).to have_button("Approve #{@lobster.name} for Adoption")
+        expect(page).to have_button("Reject #{@lobster.name} for Adoption")
+      end
     end
-    it "Two applicants apply for the same pet. As admin, I go to the 
-        first applicant's show page, REJECT their application. When I
-        visit the second applicant's show page, I still see the buttons
+    
+    it "Two applicants apply for the same pet. As admin, I go to the first applicant's show page, REJECT their application. When I visit the second applicant's show page, I still see the buttons
         to either accept or reject their specific application for that pet." do
 
-        visit "admin/applicants/#{@thomas.id}"
+      visit "admin/applicants/#{@thomas.id}"
 
-        click_on "Reject #{@lobster.name} for Adoption"
+      click_on "Reject #{@lobster.name} for Adoption"
 
-        visit "admin/applicants/#{@danny.id}"
-        within "#pet-#{@lobster.id}" do
-
-          expect(page).to have_content(@lobster.name)
-          expect(page).to have_button("Approve #{@lobster.name} for Adoption")
-          expect(page).to have_button("Reject #{@lobster.name} for Adoption")
-        end
+      within "#pet-#{@lobster.id}" do
+        expect(page).to have_content(@lobster.name)
+        expect(page).to have_button("Approve #{@lobster.name} for Adoption")
+        expect(page).to have_button("Reject #{@lobster.name} for Adoption")
+      end
     end
   end
 end
