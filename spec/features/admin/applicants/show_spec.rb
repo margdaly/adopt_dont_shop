@@ -62,7 +62,6 @@ RSpec.describe "Admin Applicants Show" do
       expect(page).to have_content("#{@lucille_bald.name} is rejected for adoption.")
       expect(page).to_not have_button("Reject #{@lucille_bald.name} for adoption")
       expect(page).to_not have_content("#{@sylvester.name} is rejected for adoption.")
-      save_and_open_page
     end
   end
 end
