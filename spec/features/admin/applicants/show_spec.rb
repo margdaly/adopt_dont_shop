@@ -21,4 +21,30 @@ RSpec.describe "Admin Applicants Show" do
     PetApplicant.create!(applicant: @danny, pet: @lobster)
     PetApplicant.create!(applicant: @danny, pet: @scooby)
   end
+
+  describe "approving a pet for adoption" do
+    it "displays all pets on that  application" do
+      visit "/admin/applicants/#{@danny.id}"
+
+      expect(page).to have_content(@lobster.name)
+      expect(page).to have_content(@scooby.name)
+      expect(page).to_not have_content(@lucille_bald.name)
+      expect(page).to_not have_content(@sylvester.name)
+    end
+
+    it 'has a button to approve the pet for adoption' do
+      visit "/admin/applicants/#{@danny.id}"
+
+      save_and_open_page
+      expect(page).to have_button("Approve #{@scooby.name} for Adoption")
+      expect(page).to have_button("Approve #{@lobster.name} for Adoption")
+      expect(page).to_not have_button("Approve #{@lucille_bald.name} for Adoption")
+      expect(page).to_not have_button("Approve #{@sylvester.name} for Adoption")
+      click_on "Approve #{@lobster.name} for Adoption"
+
+      expect(current_path).to eq("/admin/applicants/#{@danny.id}")
+      expect(page).to have_content("#{@lobster.name}'s approved for adoption!")
+      expect(page).to_not have_button("Approve #{@lobster.name} for Adoption")
+    end
+  end
 end

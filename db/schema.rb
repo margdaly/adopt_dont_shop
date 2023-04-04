@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_03_012349) do
+ActiveRecord::Schema.define(version: 2023_04_04_000019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "admins", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "applicants", force: :cascade do |t|
     t.string "name"
@@ -49,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_04_03_012349) do
     t.bigint "shelter_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
 
@@ -59,8 +55,6 @@ ActiveRecord::Schema.define(version: 2023_04_03_012349) do
     t.integer "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "admin_id"
-    t.index ["admin_id"], name: "index_shelters_on_admin_id"
   end
 
   create_table "veterinarians", force: :cascade do |t|
