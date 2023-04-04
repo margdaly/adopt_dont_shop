@@ -34,7 +34,9 @@ RSpec.describe "Applicant Show" do
   
   it "shows applicant's attributes" do
     visit "/applicants/#{@olivia.id}"
-
+    
+    expect(page).to have_content("Thank you for choosing to adopt!")
+    expect(page).to have_content("Every pet you adopt is saving a life!")
     expect(page).to have_content("#{@olivia.name}")
     expect(page).to have_content("#{@olivia.street}")
     expect(page).to have_content("#{@olivia.city}")
@@ -67,7 +69,8 @@ RSpec.describe "Applicant Show" do
 
     it "has a search bar for a pet by name, that displays any pet names that matches the search" do
       visit "/applicants/#{@heather.id}"
-
+      expect(page).to have_content("Thank you for choosing to adopt!")
+      expect(page).to have_content("Every pet you adopt is saving a life!")
       expect(page).to have_content("Add a Pet to this Application")
       fill_in :search_name, with: "Scooby"
       
@@ -79,13 +82,13 @@ RSpec.describe "Applicant Show" do
 
     it 'can add a searched pet to an application' do 
       visit "/applicants/#{@heather.id}"
-      save_and_open_page
+   
       expect(page).to_not have_content("Adopt this Pet")
       
       fill_in :search_name, with: "Scooby"
       click_on "Search"
       click_on "Adopt this Pet"
-      save_and_open_page
+     
 
       expect(current_path).to eq("/applicants/#{@heather.id}")
       within "#pet-#{@heather.pets.first.id}" do
