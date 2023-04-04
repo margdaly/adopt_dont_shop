@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_04_000019) do
+ActiveRecord::Schema.define(version: 2023_03_31_051159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2023_04_04_000019) do
   create_table "pet_applicants", force: :cascade do |t|
     t.bigint "pet_id"
     t.bigint "applicant_id"
+    t.string "pet_status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["applicant_id"], name: "index_pet_applicants_on_applicant_id"
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 2023_04_04_000019) do
     t.bigint "shelter_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
     t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
 
