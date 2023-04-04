@@ -2,33 +2,5 @@ class Admin::ApplicantsController < ApplicationController
   def show
     @applicant = Applicant.find(params[:id])
     @pets = @applicant.pets
-    # @pet = Pet.find(params[:id])
-    # @pet.status == "Pending"
-    # # require 'pry'; binding.pry
-    # # pet = Pet.find(params[:id])
   end
-
-  # def update
-  #   @applicant = Applicant.find(params[:id])
-  #   @pet = Pet.find(params[:pet_id])
-  #   if params[:commit] == "Approve #{@pet.name} for Adoption"
-  #     @pet.update({status: "Approved"})
-  #     @pet.save
-  #   end
-  #   redirect_to "/admin/applicants/#{@applicant.id}"
-  # end
-
-  # def update
-  #   @pet_applicant = PetApplicant.find(params[:id])
-  #   @pet = Pet.find(params[:pet_id])
-
-  #   if params[:commit] == "Approve #{@pet.name} for Adoption"
-  #     @pet.update({status: "Approved"})
-  #     @pet.save
-  #   elsif params[:commit] == "Reject #{@pet.name} for Adoption"
-  #     @pet.update({status: "Rejected"})
-  #     @pet.save
-  #   end
-  #   redirect_to "/admin/applicants/#{@applicant.id}"
-  # end
 end
