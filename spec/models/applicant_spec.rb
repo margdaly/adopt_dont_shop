@@ -30,8 +30,8 @@ RSpec.describe Applicant, type: :model do
     
     describe '#pet_app_status' do
       it "matches pet application with a specific pet id and applicant id" do
-      expect(@danny.pet_app_find("#{@scooby.id}")).to eq(@application_2)
-      expect(@danny.pet_app_find("#{@lobster.id}")).to eq(@application_1)
+        expect(@danny.pet_app_find("#{@scooby.id}")).to eq(@application_2)
+        expect(@danny.pet_app_find("#{@lobster.id}")).to eq(@application_1)
       end 
     end
   end
