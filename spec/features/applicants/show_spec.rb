@@ -79,13 +79,12 @@ RSpec.describe "Applicant Show" do
 
     it 'can add a searched pet to an application' do 
       visit "/applicants/#{@heather.id}"
-      save_and_open_page
+ 
       expect(page).to_not have_content("Adopt this Pet")
       
       fill_in :search_name, with: "Scooby"
       click_on "Search"
       click_on "Adopt this Pet"
-      save_and_open_page
 
       expect(current_path).to eq("/applicants/#{@heather.id}")
       within "#pet-#{@heather.pets.first.id}" do
