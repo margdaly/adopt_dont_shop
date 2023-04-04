@@ -5,6 +5,14 @@ RSpec.describe Applicant, type: :model do
     it {should have_many :pet_applicants}
     it {should have_many(:pets).through(:pet_applicants)}
   end
+  
+  describe "validations" do
+    it {should validate_presence_of(:name)}
+    it {should validate_presence_of(:street)}
+    it {should validate_presence_of(:city)}
+    it {should validate_presence_of(:state)}
+    it {should validate_presence_of(:zip)}
+  end
 
   describe "instance methods" do
     before :each do
