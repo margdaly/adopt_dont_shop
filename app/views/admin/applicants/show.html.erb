@@ -13,7 +13,8 @@
         <%= form.hidden_field :pet_status, value: "Rejected"  %>
         <%= form.submit "Reject #{pet.name} for Adoption" %>
       <% end %></p>
-      <% elsif %>
+      </div>
+    <% else %>
         <h2>Approved Pet Applications</h2>
         <div id="pet-<%= pet.id %>">
         <% if pet_applicant.pet_status == "Approved" %>

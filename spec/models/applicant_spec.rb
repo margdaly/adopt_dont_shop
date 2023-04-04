@@ -5,6 +5,14 @@ RSpec.describe Applicant, type: :model do
     it {should have_many :pet_applicants}
     it {should have_many(:pets).through(:pet_applicants)}
   end
+  
+  describe "validations" do
+    it {should validate_presence_of(:name)}
+    it {should validate_presence_of(:street)}
+    it {should validate_presence_of(:city)}
+    it {should validate_presence_of(:state)}
+    it {should validate_presence_of(:zip)}
+  end
 
   describe "instance methods" do
     before :each do
@@ -32,6 +40,8 @@ RSpec.describe Applicant, type: :model do
       it "matches pet application with a specific pet id and applicant id" do
         expect(@danny.pet_app_find("#{@scooby.id}")).to eq(@application_2)
         expect(@danny.pet_app_find("#{@lobster.id}")).to eq(@application_1)
+        expect(@sasha.pet_app_find("#{@sylvester.id}")).to eq(@application_4)
+        expect(@sasha.pet_app_find("#{@lucille_bald.id}")).to eq(@application_3)
       end 
     end
   end

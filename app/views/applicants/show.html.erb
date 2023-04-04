@@ -9,8 +9,10 @@
 <br>
 <p><h3>Currently Applying For: </h3></p>
   <% @applicant.pets.each do |pet|%>
+  <div id="pet-<%= pet.id %>">
     <p> <%= link_to pet.name, "/pets/#{pet.id}" %> </p>
   <% end %>
+  </div>
 <br>
   <% if @applicant.status == 'In Progress' %>
     <%= form_with url: "/applicants/#{@applicant.id}", method: :get, local: true do |form| %>
