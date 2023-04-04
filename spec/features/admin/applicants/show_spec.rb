@@ -35,7 +35,6 @@ RSpec.describe "Admin Applicants Show" do
     it 'has a button to approve the pet for adoption' do
       visit "/admin/applicants/#{@danny.id}"
 
-      # save_and_open_page
       expect(page).to have_button("Approve #{@scooby.name} for Adoption")
       expect(page).to have_button("Approve #{@lobster.name} for Adoption")
       expect(page).to_not have_button("Approve #{@lucille_bald.name} for Adoption")
@@ -48,9 +47,10 @@ RSpec.describe "Admin Applicants Show" do
       expect(page).to_not have_button("Approve #{@lobster.name} for Adoption")
       expect(page).to have_button("Approve #{@scooby.name} for Adoption")
     end
+    
     it 'has a button to reject the pet for adoption' do
       visit "/admin/applicants/#{@sasha.id}"
-      # save_and_open_page
+
       expect(page).to have_button("Reject #{@lucille_bald.name} for Adoption")
       expect(page).to have_button("Reject #{@sylvester.name} for Adoption")
       expect(page).to_not have_button("Reject #{@scooby.name} for Adoption")
