@@ -47,5 +47,21 @@ RSpec.describe "Admin Applicants Show" do
       expect(page).to_not have_button("Approve #{@lobster.name} for Adoption")
       expect(page).to have_button("Approve #{@scooby.name} for Adoption")
     end
+    
+    it 'has a button to reject the pet for adoption' do
+      visit "/admin/applicants/#{@sasha.id}"
+
+      expect(page).to have_button("Reject #{@lucille_bald.name} for Adoption")
+      expect(page).to have_button("Reject #{@sylvester.name} for Adoption")
+      expect(page).to_not have_button("Reject #{@scooby.name} for Adoption")
+      expect(page).to_not have_button("Reject #{@lobster.name} for Adoption")
+      
+      click_on "Reject #{@lucille_bald.name} for Adoption"
+
+      expect(current_path).to eq("/admin/applicants/#{@sasha.id}")
+      expect(page).to have_content("#{@lucille_bald.name} is rejected for adoption.")
+      expect(page).to_not have_button("Reject #{@lucille_bald.name} for adoption")
+      expect(page).to_not have_content("#{@sylvester.name} is rejected for adoption.")
+    end
   end
 end

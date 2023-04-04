@@ -1,21 +1,31 @@
 <h1> <%= @applicant.name %>'s Application</h1>
 <h2>Pets with Pending Applications</h2>
   <% @applicant.pets.each do |pet| %>
-    <div id="pet-<%= pet.id %>">
-    <% if pet.status == nil %>
-    <p><%= pet.name %></p>
-    <%= form_with url: "/admin/applicants/#{@applicant.id}", local: true, method: :patch do |form| %>
-          <%= form.hidden_field :pet_id, value: pet.id %>
-          <%= form.submit "Approve #{pet.name} for Adoption" %>
+    <% pet_applicant = @applicant.pet_app_find(pet.id) %>
+    <% if pet_applicant.pet_status == "Pending" %>
+      <div id="pet-<%= pet.id %>">
+      <b><p><%= pet.name %></p><b>
+      <p><%= form_with model: pet_applicant, url: "/admin/applicants/#{pet_applicant.id}", local: true, method: :patch do |form| %>
+        <%= form.hidden_field :pet_status, value: "Approved" %>
+        <%= form.submit "Approve #{pet.name} for Adoption" %>
+      <% end %></p>
+      <p><%= form_with model: pet_applicant, url: "/admin/applicants/#{pet_applicant.id}", local: true, method: :patch do |form| %>
+        <%= form.hidden_field :pet_status, value: "Rejected"  %>
+        <%= form.submit "Reject #{pet.name} for Adoption" %>
+      <% end %></p>
+      <% elsif %>
+        <h2>Approved Pet Applications</h2>
+        <div id="pet-<%= pet.id %>">
+        <% if pet_applicant.pet_status == "Approved" %>
+          <p><%= "#{pet.name}"%> is approved for adoption!</p>
         <% end %>
+      </div>
+      <br>
+      <h2>Rejected Pet Applications</h2>
+      <div id="pet-<%= pet.id %>">
+        <% if pet_applicant.pet_status == "Rejected" %>
+          <p><%= "#{pet.name}"%> is rejected for adoption.</p>
         <% end %>
+      </div>
+      <% end %>
   <% end %>
-    </div>
-    <h2>Approved Pet Applications</h2>
-    <% @applicant.pets.each do |pet| %>
-    <div id="pet-<%= pet.name %>">
-        <% if pet.status == "Approved" %>
-        <p><%= "#{pet.name}"%> is approved for adoption!</p>
-        <% end %>
-        <% end %>
-    </div>
