@@ -28,9 +28,9 @@ Applicant.delete_all
 ## APPLICANTS    
     @heather = Applicant.create!(name: "Heather Moore", street: "Pearl St", city: "Denver", state: "CO", zip: "80210")
 
-    @olivia = Applicant.create!(name: "Olivia Valentin", street: "1234 Main St", city: "Denver", state: "CO", zip: "80203",  good_home: "Lots of love and land!", status: "Pending")
-    PetApplicant.create!(applicant: @olivia, pet: @lucille_bald)
-    PetApplicant.create!(applicant: @olivia, pet: @lobster)
+    # @olivia = Applicant.create!(name: "Olivia Valentin", street: "1234 Main St", city: "Denver", state: "CO", zip: "80203",  good_home: "Lots of love and land!", status: "Pending")
+    # PetApplicant.create!(applicant: @olivia, pet: @lucille_bald)
+    # PetApplicant.create!(applicant: @olivia, pet: @lobster)
 
     @thomas = Applicant.create!(name: "Thomas", street: "1515 15 Ave", city: "Denver", state: "CO", zip: "80203", good_home: "Lots of love and land!", status: "Pending")
     PetApplicant.create!(applicant: @thomas, pet: @lobster)
