@@ -32,13 +32,13 @@ Applicant.delete_all
     # PetApplicant.create!(applicant: @olivia, pet: @lucille_bald)
     # PetApplicant.create!(applicant: @olivia, pet: @lobster)
 
-    @thomas = Applicant.create!(name: "Thomas", street: "1515 15 Ave", city: "Denver", state: "CO", zip: "80203", good_home: "Lots of love and land!", status: "Pending")
-    PetApplicant.create!(applicant: @thomas, pet: @lobster)
+    # @thomas = Applicant.create!(name: "Thomas", street: "1515 15 Ave", city: "Denver", state: "CO", zip: "80203", good_home: "Lots of love and land!", status: "Pending")
+    # PetApplicant.create!(applicant: @thomas, pet: @lobster)
     
-    @sasha = Applicant.create!(name: "Sasha Baron", street: "10 Maple Way", city: "Eagleton", state: "CO", zip: "80223", good_home: "Cat Whisperer", status: "Pending")
-    PetApplicant.create!(applicant: @sasha, pet: @lucille_bald)
-    PetApplicant.create!(applicant: @sasha, pet: @sylvester)
+    # @sasha = Applicant.create!(name: "Sasha Baron", street: "10 Maple Way", city: "Eagleton", state: "CO", zip: "80223", good_home: "Cat Whisperer", status: "Pending")
+    # PetApplicant.create!(applicant: @sasha, pet: @lucille_bald)
+    # PetApplicant.create!(applicant: @sasha, pet: @sylvester)
     
-    @danny = Applicant.create!(name: "Danny Lowe", street: "640 Center St.", city: "Plymouth", state: "CO", zip: "80101", good_home: "Energetic and exercise lover", status: "Pending")
-    PetApplicant.create!(applicant: @danny, pet: @lobster)
-    PetApplicant.create!(applicant: @danny, pet: @scooby)
+    # @danny = Applicant.create!(name: "Danny Lowe", street: "640 Center St.", city: "Plymouth", state: "CO", zip: "80101", good_home: "Energetic and exercise lover", status: "Pending")
+    # PetApplicant.create!(applicant: @danny, pet: @lobster)
+    # PetApplicant.create!(applicant: @danny, pet: @scooby)
