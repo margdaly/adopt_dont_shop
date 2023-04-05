@@ -4,7 +4,8 @@ RSpec.describe 'the new applicant page' do
   describe 'starting an application' do
     it 'has a form' do
       visit "/applicants/new"
-
+      expect(page).to have_content("Thank you for choosing to adopt!")
+      expect(page).to have_content("Every pet you adopt is saving a life!")
       expect(page).to have_field(:name)
       expect(page).to have_field(:street)
       expect(page).to have_field(:city)
