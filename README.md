@@ -2,6 +2,15 @@
 
 This is a paired project used in Turing School's Backend Program Module 2.
 
+## Contributors
+
+Margaret Daly  [LinkedIn Profile](https://www.linkedin.com/in/marg-aret-daly/)<br>
+Reilly Miller  [LinkedIn Profile](https://www.linkedin.com/in/reilly-miller-6b6131266/)
+
+## DTR
+
+[Our DTR for this Project](https://docs.google.com/document/d/1xNUnjBg0rUl77-Ygvhdw5zhEs3XYXgxIemR8dzyUymA/edit?usp=sharing)
+
 ## Learning Goals
 
 In this project, students will build upon the code in this repo to create a Pet Adoption Platform. Users will be able to apply to adopt pets, and Admins will be able to approve or reject applications and see statistics for the Shelters, Pets, and Applications in the system.

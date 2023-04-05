@@ -76,6 +76,8 @@ RSpec.describe "Admin Applicants Show" do
       visit "admin/applicants/#{@danny.id}"
 
       click_on "Approve #{@lobster.name} for Adoption"
+      
+      visit "admin/applicants/#{@thomas.id}"
 
       within "#pet-#{@lobster.id}" do
         expect(page).to have_content(@lobster.name)
@@ -90,6 +92,8 @@ RSpec.describe "Admin Applicants Show" do
       visit "admin/applicants/#{@thomas.id}"
 
       click_on "Reject #{@lobster.name} for Adoption"
+
+      visit "admin/applicants/#{@danny.id}"
 
       within "#pet-#{@lobster.id}" do
         expect(page).to have_content(@lobster.name)
