@@ -27,7 +27,7 @@
   <% if !@searched_pets.nil? %>
     <% @searched_pets.each do |pet| %>
       <b><%= pet.name %></b>
-      <%= form_with model: PetApplicant.new, url: "/pet_applicants", local: true, method: :post do |form| %>
+      <%= form_with model: PetApplicant.new, url: "/applicants/#{@applicant.id}", local: true, method: :post do |form| %>
         <%= form.hidden_field :pet_id, value: pet.id %>
         <%= form.hidden_field :applicant_id, value: @applicant.id %>
         <%= form.submit "Adopt this Pet" %>

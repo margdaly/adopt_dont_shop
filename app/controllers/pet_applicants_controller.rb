@@ -2,7 +2,7 @@ class PetApplicantsController < ApplicationController
   def create
     pet_applicant = PetApplicant.create(pet_applicant_params)
     applicant = pet_applicant.applicant
-    redirect_to "/applicants/#{pet_applicant.applicant_id}"
+    redirect_to "/applicants/#{applicant.id}"
   end
 
   def update
