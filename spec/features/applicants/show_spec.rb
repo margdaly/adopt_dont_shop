@@ -82,43 +82,41 @@ RSpec.describe "Applicant Show" do
 
     it 'can add a searched pet to an application' do 
       visit "/applicants/#{@heather.id}"
-   
+
       expect(page).to_not have_content("Adopt this Pet")
       
       fill_in :search_name, with: "Scooby"
       click_on "Search"
       click_on "Adopt this Pet"
-     
 
       expect(current_path).to eq("/applicants/#{@heather.id}")
+      
       within "#pet-#{@heather.pets.first.id}" do
-
         expect(page).to have_content("#{@heather.pets.first.name}")
       end
     end
   end
 
   describe "Application pending" do
-      it "I see input to enter good home, submits application after filling form,
+    it "I see input to enter good home, submits application after filling form,
           status changes to pending." do
-        visit "/applicants/#{@olivia.id}"
+      visit "/applicants/#{@olivia.id}"
 
-        expect(page).to have_content("Currently Applying For:")
-        expect(@olivia.good_home).to eq(nil)
-        expect(page).to have_field(:good_home)
-        expect(page).to have_button("Submit Application")
+      expect(page).to have_content("Currently Applying For:")
+      expect(@olivia.good_home).to eq(nil)
+      expect(page).to have_field(:good_home)
+      expect(page).to have_button("Submit Application")
         
-        fill_in :good_home, with: "to save lives"
-        click_on "Submit Application"
+      fill_in :good_home, with: "to save lives"
+      click_on "Submit Application"
         
-        expect(current_path).to eq("/applicants/#{@olivia.id}")
-        expect(page).to have_content("Pending")
-
-        expect(page).to_not have_link("Submit Application")
-        expect(page).to_not have_link("Adopt this Pet")
-        expect(page).to_not have_link("Search")
-        expect(page).to have_content(@olivia.good_home)
-        expect(page).to have_content("Description of why You would make a Good Home:")
+      expect(current_path).to eq("/applicants/#{@olivia.id}")
+      expect(page).to have_content("Pending")
+      expect(page).to_not have_link("Submit Application")
+      expect(page).to_not have_link("Adopt this Pet")
+      expect(page).to_not have_link("Search")
+      expect(page).to have_content(@olivia.good_home)
+      expect(page).to have_content("Description of why You would make a Good Home:")
     end
   end
   
@@ -128,12 +126,14 @@ RSpec.describe "Applicant Show" do
       @scooby = Pet.create(name: 'Scooby', age: 2, breed: 'Great Dane', adoptable: true, shelter_id: @shelter_1.id)
       @heather = Applicant.create(name: "Heather", street: "pearl st", city: "denver", state: "CO", zip: "80203")
     end
+    
     it "No pets added, I do not see submit application" do
       visit "/applicants/#{@heather.id}"
 
       expect(page).to_not have_link("Submit Application")
     end
   end
+  
   describe "Search for partial matches" do
     it "When I search scooby, I see pets: scooby, scooby doobie, 
         and scooby doobie doo" do
@@ -147,6 +147,7 @@ RSpec.describe "Applicant Show" do
 
       fill_in :search_name, with: "scooby"
       click_on "Search"
+      
       expect(page).to have_content(@scooby.name)
       expect(page).to have_content(@scoobydoob.name)
       expect(page).to have_content(@scoobydoobiedoo.name)
@@ -163,6 +164,7 @@ RSpec.describe "Applicant Show" do
 
       fill_in :search_name, with: "fluff"
       click_on "Search"
+      
       expect(page).to have_content(@fluff.name)
       expect(page).to have_content(@fluffy.name)
       expect(page).to have_content(@mr_fluff.name) 
